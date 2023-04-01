@@ -9,9 +9,9 @@ const helmet = require('helmet');
 
 const router = require('./router.js');
 
-const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/DomoMaker';
-
 const port = process.env.PORT || process.env.NODE_PORT || 3000;
+
+const dbURI = process.env.MONGODB_URI || 'mongodb://127.0.0.1/DomoMaker';
 
 mongoose.connect(dbURI).catch((err) => {
   if (err) {
@@ -23,7 +23,7 @@ mongoose.connect(dbURI).catch((err) => {
 const app = express();
 
 app.use(helmet());
-app.use('/assets', express.static(path.resolve(`${__dirname}/hosted/`)));
+app.use('/assets', express.static(path.resolve(`${__dirname}/../hosted/`)));
 app.use(favicon(`${__dirname}/../hosted/img/favicon.png`));
 app.use(compression());
 app.use(bodyParser.urlencoded({ extended: true }));
