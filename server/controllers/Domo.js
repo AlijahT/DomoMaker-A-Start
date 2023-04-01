@@ -24,9 +24,10 @@ const makeDomo = async (req, res) => {
   };
 
   try {
-    const newDomo = newDomo(domoData);
+    const newDomo = new Domo(domoData);
     newDomo.save();
     return res.json({ redirect: '/maker' });
+
   }catch (err){
     console.log(err);
     if(err.code === 11000){
